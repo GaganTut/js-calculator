@@ -12,6 +12,9 @@ var calculatorModule = (function() {
   var calculator = {};
 
   calculator.load = function(newTotal) {
+    if (typeof newTotal !== "number") {
+      throw new Error("That ain't a number!!!");
+    }
     _total = newTotal;
     return _total;
   };
@@ -19,18 +22,30 @@ var calculatorModule = (function() {
     return _total;
   };
   calculator.add = function(num) {
+    if (typeof num !== "number") {
+      throw new Error ("That ain't a number!!!");
+    }
     _total += num;
     return _total;
   };
   calculator.subtract = function(num) {
+    if (typeof num !== "number") {
+      throw new Error("That ain't a number!!!");
+    }
     _total -= num;
     return _total;
   };
   calculator.multiply = function(num) {
+    if (typeof num !== "number") {
+      throw new Error("That ain't a number!!!");
+    }
     _total *= num;
     return _total;
   };
   calculator.divide = function(num) {
+    if (typeof num !== "number") {
+      throw new Error ("That ain't a number!!!");
+    }
     _total /= num;
     return _total;
   };
