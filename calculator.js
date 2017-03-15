@@ -10,10 +10,14 @@ var calculatorModule = (function() {
   var _memory = 0;
   var _total = 0;
 
-  function load(newTotal) {
-    if (typeof newTotal !== "number") {
+  function testError(testNum) {
+    if (typeof testNum !== "number") {
       throw new Error("That ain't a number!!!");
     }
+  }
+
+  function load(newTotal) {
+    testError(newTotal);
     _total = newTotal;
     return _total;
   }
@@ -21,30 +25,22 @@ var calculatorModule = (function() {
     return _total;
   }
   function add(num) {
-    if (typeof num !== "number") {
-      throw new Error ("That ain't a number!!!");
-    }
+    testError(num);
     _total += num;
     return _total;
   }
   function subtract(num) {
-    if (typeof num !== "number") {
-      throw new Error("That ain't a number!!!");
-    }
+    testError(num);
     _total -= num;
     return _total;
   }
   function multiply(num) {
-    if (typeof num !== "number") {
-      throw new Error("That ain't a number!!!");
-    }
+    testError(num);
     _total *= num;
     return _total;
   }
   function divide(num) {
-    if (typeof num !== "number") {
-      throw new Error ("That ain't a number!!!");
-    }
+    testError(num);
     _total /= num;
     return _total;
   }
