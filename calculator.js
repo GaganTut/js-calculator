@@ -7,18 +7,24 @@
 */
 
 var calculatorModule = (function() {
-  var memory;
-  var total;
+  var _memory;
+  var _total;
   var calculator = {};
 
+  calculator.load = function(newTotal) {
+    _total = newTotal;
+    return _total;
+  };
+
   return calculator;
-})();
+});
 
 /**
  * sets the `total` to the number passed in
  * @param  { Number } x
  * @return { Number }    current total
  */
+
 
 
 /**
