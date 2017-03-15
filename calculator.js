@@ -19,14 +19,21 @@ var calculatorModule = (function() {
     return _total;
   };
   calculator.add = function(num) {
-    _total += addition;
+    _total += num;
     return _total;
   };
   calculator.subtract = function(num) {
     _total -= num;
     return _total;
   };
-
+  calculator.multiply = function(num) {
+    _total *= num;
+    return _total;
+  };
+  calculator.divide = function(num) {
+    _total /= num;
+    return _total;
+  };
 
   return calculator;
 });
