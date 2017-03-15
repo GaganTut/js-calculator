@@ -34,6 +34,17 @@ var calculatorModule = (function() {
     _total /= num;
     return _total;
   };
+  calculator.recallMemory = function() {
+    return _memory;
+  };
+  calculator.saveMemory = function() {
+    _memory = _total;
+    return _memory;
+  };
+  calculator.clearMemory = function() {
+    _memory = 0;
+    return _memory;
+  };
 
   return calculator;
 });
