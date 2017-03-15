@@ -9,56 +9,67 @@
 var calculatorModule = (function() {
   var _memory = 0;
   var _total = 0;
-  var calculator = {};
 
-  calculator.load = function(newTotal) {
+  function load(newTotal) {
     if (typeof newTotal !== "number") {
       throw new Error("That ain't a number!!!");
     }
     _total = newTotal;
     return _total;
-  };
-  calculator.getTotal = function() {
+  }
+  function getTotal() {
     return _total;
-  };
-  calculator.add = function(num) {
+  }
+  function add(num) {
     if (typeof num !== "number") {
       throw new Error ("That ain't a number!!!");
     }
     _total += num;
     return _total;
-  };
-  calculator.subtract = function(num) {
+  }
+  function subtract(num) {
     if (typeof num !== "number") {
       throw new Error("That ain't a number!!!");
     }
     _total -= num;
     return _total;
-  };
-  calculator.multiply = function(num) {
+  }
+  function multiply(num) {
     if (typeof num !== "number") {
       throw new Error("That ain't a number!!!");
     }
     _total *= num;
     return _total;
-  };
-  calculator.divide = function(num) {
+  }
+  function divide(num) {
     if (typeof num !== "number") {
       throw new Error ("That ain't a number!!!");
     }
     _total /= num;
     return _total;
-  };
-  calculator.recallMemory = function() {
+  }
+  function recallMemory() {
     return _memory;
-  };
-  calculator.saveMemory = function() {
+  }
+  function saveMemory() {
     _memory = _total;
     return _memory;
-  };
-  calculator.clearMemory = function() {
+  }
+  function clearMemory() {
     _memory = 0;
     return _memory;
+  }
+
+  var calculator = {
+    load,
+    getTotal,
+    add,
+    subtract,
+    multiply,
+    divide,
+    recallMemory,
+    saveMemory,
+    clearMemory
   };
 
   return calculator;
