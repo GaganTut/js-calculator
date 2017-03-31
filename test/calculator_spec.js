@@ -1,6 +1,12 @@
 // import dependencies e.g. chai and the calculator module
+/* jshint esversion: 6 */
+const chai = require("chai");
+const calc = require("../calculator.js");
+
 
 // define two variables: `expect` and `should`.
+const expect = chai.expect;
+const should = chai.should;
 
 // define a `describe` block. what are we testing? what should be name this suite? This is the "container" describe block.
 
