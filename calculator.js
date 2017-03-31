@@ -71,6 +71,9 @@ var calculatorModule = (function() {
   return calculator;
 });
 
+var myCalc = calculatorModule();
+myCalc.load(100);
+console.log(myCalc.getTotal());
 
   /**
    * sets the `total` to the number passed in
