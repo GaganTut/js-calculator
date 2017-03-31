@@ -47,6 +47,28 @@ module.exports = (() => {
     return total;
   };
 
+  calculator.quotient = function(num) {
+    checkNum(num);
+    if (num === 0 || num === -0) {
+      throw new Error("Can't Divide By Zero");
+    }
+    total /= num;
+    return total;
+  };
+
+  calculator.getMemory = function() {
+    return memory;
+  };
+
+  calculator.storeMemory = function(num) {
+    checkNum(num);
+    memory = num;
+  };
+
+  calculator.clearMemory = function() {
+    memory = 0;
+  };
+
   return calculator;
 })();
 

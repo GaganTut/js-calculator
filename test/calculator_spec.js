@@ -102,6 +102,48 @@ describe("product", () => {
   });
 });
 
+describe("quotient", () => {
+  it("should divide parameter from the total and return new total", () => {
+    calc.load(20);
+    expect(calc.quotient(4)).to.equal(5);
+    expect(calc.quotient(0.5)).to.equal(10);
+    expect(calc.quotient(-5)).to.equal(-2);
+  });
+  it("should not let you divide by 0", () => {
+    expect(calc.quotient.bind(null, 0)).to.throw(Error);
+    expect(calc.quotient.bind(null, -0)).to.throw(Error);
+  });
+});
+
+describe("getMemory", () => {
+  it("should return the number stored in memory", () => {
+    expect(calc.getMemory()).to.equal(0);
+  });
+});
+
+describe("storeMemory", () => {
+  it("should store a number into the memory", () => {
+    calc.storeMemory(15);
+    expect(calc.getMemory()).to.equal(15);
+    calc.storeMemory(-0.5);
+    expect(calc.getMemory()).to.equal(-0.5);
+  });
+  it("should also filter only real numbers", () => {
+    expect(calc.storeMemory.bind(null, NaN)).to.throw(Error);
+  });
+});
+
+describe("clearMemory", () => {
+  it("should clear the number in memory", () => {
+    calc.storeMemory(15);
+    calc.clearMemory();
+    expect(calc.getMemory()).to.equal(0);
+    calc.storeMemory(8);
+    calc.clearMemory();
+    expect(calc.getMemory()).to.equal(0);
+  });
+});
+
 
 
 
