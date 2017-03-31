@@ -83,6 +83,27 @@ describe("difference", () => {
   });
 });
 
+describe("product", () => {
+  it("should be a function", () => {
+    expect(calc.product).to.be.a("function");
+  });
+
+  it("should multiply parameter to the total and return the total", () => {
+    calc.load(1);
+    expect(calc.product(5)).to.equal(5);
+    expect(calc.product(8)).to.equal(40);
+    expect(calc.product(-0.25)).to.equal(-10);
+  });
+
+  it("should not accept non-numbers and unreal numbers", () => {
+    expect(calc.product.bind(null, {50: -5})).to.throw(Error);
+    expect(calc.product.bind(null, Infinity)).to.throw(Error);
+    expect(calc.product.bind(null, "heyyyy")).to.throw(Error);
+  });
+});
+
+
+
 
   /**
    * each method should have it's own `describe` block

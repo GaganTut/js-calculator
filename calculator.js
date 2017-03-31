@@ -41,6 +41,12 @@ module.exports = (() => {
     return total;
   };
 
+  calculator.product = function(num) {
+    checkNum(num);
+    total *= num;
+    return total;
+  };
+
   return calculator;
 })();
 
