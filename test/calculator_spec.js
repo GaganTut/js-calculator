@@ -45,6 +45,44 @@ describe("getTotal", () => {
   });
 });
 
+describe("sum", () => {
+  it("should be a function", () => {
+    expect(calc.sum).to.be.a("function");
+  });
+
+  it("should add parameter to total and return total", () => {
+    calc.load(0);
+    expect(calc.sum(5)).to.equal(5);
+    expect(calc.sum(8)).to.equal(13);
+    expect(calc.sum(-3)).to.equal(10);
+  });
+
+  it("should not accept non-numbers and unreal numbers", () => {
+    expect(calc.sum.bind(null, Infinity)).to.throw(Error);
+    expect(calc.sum.bind(null, NaN)).to.throw(Error);
+    expect(calc.sum.bind(null, [645])).to.throw(Error);
+  });
+});
+
+describe("difference", () => {
+  it("should be a function", () => {
+    expect(calc.difference).to.be.a("function");
+  });
+
+  it("should subtract parameter from total and return the total", () => {
+    calc.load(0);
+    expect(calc.difference(5)).to.equal(-5);
+    expect(calc.difference(8)).to.equal(-13);
+    expect(calc.difference(-33)).to.equal(20);
+  });
+
+  it("should not accept non-numbers and unreal numbers", () => {
+    expect(calc.difference.bind(null, {"hello": 5})).to.throw(Error);
+    expect(calc.difference.bind(null, NaN)).to.throw(Error);
+    expect(calc.difference.bind(null, "whatever")).to.throw(Error);
+  });
+});
+
 
   /**
    * each method should have it's own `describe` block

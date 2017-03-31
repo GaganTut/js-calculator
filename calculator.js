@@ -29,6 +29,18 @@ module.exports = (() => {
     return total;
   };
 
+  calculator.sum = function(num) {
+    checkNum(num);
+    total += num;
+    return total;
+  };
+
+  calculator.difference = function(num) {
+    checkNum(num);
+    total -= num;
+    return total;
+  };
+
   return calculator;
 })();
 
