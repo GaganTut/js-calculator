@@ -1,5 +1,3 @@
-/* jshint esversion: 6 */
-
 /**
  * Declare a function named `calculatorModule`
  * this function will have two private variables declared inside of it.
@@ -7,70 +5,75 @@
  * @variable PRIVATE { Number } `total`
  * @return {object} `calculator` object that can be used
  */
-module.exports = (() => {
-  let memory = 0;
-  let total = 0;
-  let calculator = {};
 
-  function checkNum(num) {
-    if (typeof num !== "number" || num === Infinity || isNaN(num)) {
-      throw new Error("Valid Numbers Only");
+var calculatorModule = (function() {
+  var _memory = 0;
+  var _total = 0;
+
+  function testError(testNum) {
+    if (typeof testNum !== "number") {
+      throw new Error("That ain't a number!!!");
     }
   }
 
-  calculator.load = function(num) {
-    checkNum(num);
+  function load(newTotal) {
+    testError(newTotal);
+    _total = newTotal;
+    return _total;
+  }
+  function getTotal() {
+    return _total;
+  }
+  function add(num) {
+    testError(num);
+    _total += num;
+    return _total;
+  }
+  function subtract(num) {
+    testError(num);
+    _total -= num;
+    return _total;
+  }
+  function multiply(num) {
+    testError(num);
+    _total *= num;
+    return _total;
+  }
+  function divide(num) {
+    testError(num);
+    _total /= num;
+    return _total;
+  }
+  function recallMemory() {
+    return _memory;
+  }
+  function saveMemory() {
+    _memory = _total;
+    return _memory;
+  }
+  function clearMemory() {
+    _memory = 0;
+    return _memory;
+  }
 
-    total = num;
-    return total;
-  };
-
-  calculator.getTotal = function() {
-    return total;
-  };
-
-  calculator.sum = function(num) {
-    checkNum(num);
-    total += num;
-    return total;
-  };
-
-  calculator.difference = function(num) {
-    checkNum(num);
-    total -= num;
-    return total;
-  };
-
-  calculator.product = function(num) {
-    checkNum(num);
-    total *= num;
-    return total;
-  };
-
-  calculator.quotient = function(num) {
-    checkNum(num);
-    if (num === 0 || num === -0) {
-      throw new Error("Can't Divide By Zero");
-    }
-    total /= num;
-    return total;
-  };
-
-  calculator.getMemory = function() {
-    return memory;
-  };
-
-  calculator.storeMemory = function(num) {
-    checkNum(num);
-    memory = num;
-  };
-
-  calculator.clearMemory = function() {
-    memory = 0;
+  var calculator = {
+    load,
+    getTotal,
+    add,
+    subtract,
+    multiply,
+    divide,
+    recallMemory,
+    saveMemory,
+    clearMemory
   };
 
   return calculator;
-})();
+});
+
+var myCalc = calculatorModule();
+myCalc.load(100);
+console.log(myCalc.getTotal());
 
   /**
    * sets the `total` to the number passed in
