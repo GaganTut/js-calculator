@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 /**
  * Declare a function named `calculatorModule`
  * this function will have two private variables declared inside of it.
@@ -5,7 +7,30 @@
  * @variable PRIVATE { Number } `total`
  * @return {object} `calculator` object that can be used
  */
+module.exports = (() => {
+  let memory = 0;
+  let total = 0;
+  let calculator = {};
 
+  function checkNum(num) {
+    if (typeof num !== "number" || num === Infinity || isNaN(num)) {
+      throw new Error("Valid Numbers Only");
+    }
+  }
+
+  calculator.load = function(num) {
+    checkNum(num);
+
+    total = num;
+    return total;
+  };
+
+  calculator.getTotal = function() {
+    return total;
+  };
+
+  return calculator;
+})();
 
   /**
    * sets the `total` to the number passed in
